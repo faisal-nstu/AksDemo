@@ -17,5 +17,5 @@ steps:
     echo TeStiNg cUsTom cOmMeNt 2 ------------------------------
     echo TeStiNg cUsTom cOmMeNt 3 ::::::::::::::::::::::::::::::
     echo TeStiNg cUsTom cOmMeNt 4 ==============================
-    echo TeStiNg cUsTom cOmMeNt 5 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+    echo TeStiNg cUsTom cOmMeNt 5 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   displayName: 'Run a multi-line script'
