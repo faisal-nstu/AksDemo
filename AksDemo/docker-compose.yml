@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  web:
+    image: ${DOCKER_REGISTRY}/aks-web:${VERSION:-dev}
+    build:
+      context: .
+      dockerfile: AksDemo/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - "30003:80"
