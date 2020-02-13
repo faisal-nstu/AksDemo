@@ -9,28 +9,28 @@ namespace AksDemo.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class MoodForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
         {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+            "Cheerful", "Bored", "Tired", "Melancholic", "Angry", "Thoughtful"
         };
 
-        private readonly ILogger<WeatherForecastController> _logger;
+        private readonly ILogger<MoodForecastController> _logger;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public MoodForecastController(ILogger<MoodForecastController> logger)
         {
             _logger = logger;
         }
 
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        public IEnumerable<MoodForeCast> Get()
         {
             var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            return Enumerable.Range(1, 7).Select(index => new MoodForeCast
             {
                 Date = DateTime.Now.AddDays(index),
-                TemperatureC = rng.Next(-20, 55),
+                HeartBeat = rng.Next(65, 90),
                 Summary = Summaries[rng.Next(Summaries.Length)]
             })
             .ToArray();
