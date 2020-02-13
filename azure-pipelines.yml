@@ -13,9 +13,9 @@ steps:
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
-    echo TeStiNg cUsTom cOmMeNt 1 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    echo TeStiNg cUsTom cOmMeNt 1 ##############################
     echo TeStiNg cUsTom cOmMeNt 2 ------------------------------
     echo TeStiNg cUsTom cOmMeNt 3 ::::::::::::::::::::::::::::::
     echo TeStiNg cUsTom cOmMeNt 4 ==============================
-    echo TeStiNg cUsTom cOmMeNt 5 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    echo TeStiNg cUsTom cOmMeNt 5 ******************************
   displayName: 'Run a multi-line script'
