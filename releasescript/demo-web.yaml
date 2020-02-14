@@ -78,10 +78,10 @@ spec:
     #- app-staging.informatiq.no
 #    secretName: app-staging-informatiq-no-cert-prod
   rules:
-  - host: faisaldns.eastus.cloudapp.azure.com
+  - host: faisalamin27.eastus.cloudapp.azure.com
     http:
       paths:           
-      - path: /home
+      - path: /(.*)
         backend:
           serviceName: aks-demo-web-service
           servicePort: 80
