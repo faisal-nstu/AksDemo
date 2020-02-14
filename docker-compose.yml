@@ -5,4 +5,4 @@ services:
     image: ${DOCKER_REGISTRY}/aks-web:${VERSION:-dev}
     build:
       context: .
-      dockerfile: AksDemo/Dockerfile
+      dockerfile: DemoWeb/Dockerfile

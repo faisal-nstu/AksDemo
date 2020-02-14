@@ -12,16 +12,16 @@ WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["AksDemo/AksDemo.csproj", "AksDemo/"]
-RUN dotnet restore "AksDemo/AksDemo.csproj"
+COPY ["DemoWeb/DemoWeb.csproj", "DemoWeb/"]
+RUN dotnet restore "DemoWeb/DemoWeb.csproj"
 COPY . .
-WORKDIR "/src/AksDemo"
-RUN dotnet build "AksDemo.csproj" -c Release -o /app/build
+WORKDIR "/src/DemoWeb"
+RUN dotnet build "DemoWeb.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "AksDemo.csproj" -c Release -o /app/publish
+RUN dotnet publish "DemoWeb.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "AksDemo.dll"]
+ENTRYPOINT ["dotnet", "DemoWeb.dll"]
