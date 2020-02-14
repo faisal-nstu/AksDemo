@@ -81,7 +81,7 @@ spec:
   - host: faisaldns.eastus.cloudapp.azure.com
     http:
       paths:           
-      - path: /(.*)
+      - path: /home
         backend:
           serviceName: aks-demo-web-service
           servicePort: 80
