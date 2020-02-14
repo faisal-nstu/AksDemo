@@ -13,7 +13,7 @@ namespace AksDemo.Controllers
     {
         private static readonly string[] Summaries = new[]
         {
-            "Cheerful", "Bored", "Tired", "Melancholic", "Angry", "Thoughtful"
+            "Cheerful", "Bored", "Tired", "Melancholic", "Angry", "Thoughtful", "Annoyed"
         };
 
         private readonly ILogger<MoodForecastController> _logger;
