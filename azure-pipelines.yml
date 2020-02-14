@@ -6,29 +6,29 @@
 pool:
   vmImage: 'ubuntu-latest'
 
-  variables:
-    VERSION: '$(build.buildNumber)'
-    DOCKER_REGISTRY: $(dockerId).azurecr.io
+variables:
+  VERSION: '$(build.buildNumber)'
+  DOCKER_REGISTRY: $(dockerId).azurecr.io
+
+steps:
+- script: sudo service docker status
+  displayName: 'docker status'
+
+- script: docker-compose -f docker-compose.yml build
+  displayName: 'docker-compose build'
+
+- script: |
+    echo "$(dockerPassword)" | docker login  $(dockerId).azurecr.io -u $(dockerUsername) --password-stdin
+    docker push $(dockerId).azurecr.io/aks-web:$(VERSION)    
+  displayName: "docker publish"
   
-  steps:
-  - script: sudo service docker status
-    displayName: 'docker status'
-  
-  - script: docker-compose -f ./docker-compose.yml -f ./docker-compose.override.yml build
-    displayName: 'docker-compose build'
-  
-  - script: |
-      echo "$(dockerPassword)" | docker login  $(dockerId).azurecr.io -u $(dockerUsername) --password-stdin
-      docker push $(dockerId).azurecr.io/aks-web:$(VERSION)    
-    displayName: "docker publish"
+- task: CopyFiles@2
+  inputs:
+    sourceFolder: $(Build.SourcesDirectory)/Kube/
+    contents: '**/*.*'
+    targetFolder: $(Build.ArtifactStagingDirectory)/Kube/
     
-  - task: CopyFiles@2
-    inputs:
-      sourceFolder: $(Build.SourcesDirectory)/Kube/
-      contents: '**/*.*'
-      targetFolder: $(Build.ArtifactStagingDirectory)/Kube/
-      
-  - task: PublishBuildArtifacts@1
-    inputs:
-      pathtoPublish: '$(Build.ArtifactStagingDirectory)'
-      artifactsName: 'drop'
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    artifactsName: 'drop'
